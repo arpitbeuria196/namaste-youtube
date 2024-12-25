@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const videoSchema = new mongoose.Schema({
+const VideoSchema = new mongoose.Schema({
 
     title:{
         type: String,
@@ -45,4 +45,4 @@ const videoSchema = new mongoose.Schema({
 {timestamps:true}
 )
 
-module.exports = mongoose.model(videoSchema,"Video");
+module.exports = mongoose.model(VideoSchema,"Video");
