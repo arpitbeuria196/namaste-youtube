@@ -20,7 +20,7 @@ exports.createPlaylist = async (req,res)=>
 }
 
 //add Video to the playlist
-exports.addVideoPlaylist = async (req,res)=>
+exports.addVideoToPlaylist = async (req,res)=>
 {
 
     try {
