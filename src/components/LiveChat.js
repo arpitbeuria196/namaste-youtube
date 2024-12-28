@@ -8,6 +8,7 @@ const LiveChat = () => {
   const dispatch = useDispatch();
   const [inputMessage, setInputMessage] = useState("");
 
+
   useEffect(() => {
     const intervalId = setInterval(() => {
       dispatch(
@@ -25,11 +26,11 @@ const LiveChat = () => {
     if (inputMessage.trim() !== "") {
       dispatch(
         liveMessages({
-          name: "You",
+          name: "Arpit Beuria",
           message: inputMessage,
         })
       );
-      setInputMessage(""); // Clear the input field
+      setInputMessage(""); 
     }
   };
 
@@ -55,7 +56,7 @@ const LiveChat = () => {
       {/* Input Field */}
       <div className="mt-4 flex">
         <input
-          className="flex-1 p-2 border border-gray-300 rounded-l-lg focus:outline-none"
+          className="flex-1 p-2 border text-black border-gray-300 rounded-l-lg focus:outline-none"
           type="text"
           placeholder="Type a message..."
           value={inputMessage}
