@@ -1,45 +1,52 @@
-import axios from 'axios';
-import React, { useEffect } from 'react'
-import { YouTube_API } from '../utils/Constants';
-import { useState } from 'react';
-import VideoCard from './VideoCard';
-import { Link } from 'react-router-dom';
-import { adVideoCard } from './VideoCard';
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { YouTube_API } from "../utils/Constants";
+import VideoCard, { AdVideoCard } from "./VideoCard";
+import { Link } from "react-router-dom";
 
 const VideoContainer = () => {
+  const [videos, setVideos] = useState([]);
+  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(true);
 
-    const[videos,setVideos] = useState([]);
-
-   useEffect(()=>{
+  useEffect(() => {
     fetchData();
-    
-   },[]) 
+  }, []);
 
-   const fetchData = async ()=>
-   {
+  const fetchData = async () => {
     try {
-        const data = await  axios.get(YouTube_API);
-        setVideos(data.data.items);
-        console.log(data);
+      const response = await axios.get(YouTube_API);
+      if (response?.data?.items) {
+        setVideos(response.data.items);
+      } else {
+        throw new Error("Invalid API Response");
+      }
     } catch (error) {
-        console.log("Error While Fetching API",error.message);   
+      console.error("Error While Fetching API:", error.message);
+      setError("Failed to load videos. Please try again later.");
+    } finally {
+      setLoading(false);
     }
-   }
+  };
+
+  if (loading) {
+    return <div className="text-center p-4">Loading videos...</div>;
+  }
+
+  if (error) {
+    return <div className="text-center text-red-500 p-4">{error}</div>;
+  }
+
   return (
-    <div className='flex flex-wrap'>
-       <adVideoCard info = {videos[0]}/> 
-      {videos.map((video,index)=>
-      <Link key={video.id} to={"/watch?v=" + video.id}>
-        <VideoCard
-            key={index}
-            info = {video}
-    />
-
-      </Link>
-    
-    )}
+    <div className="flex flex-wrap">
+      {videos.length > 0 && <AdVideoCard info={videos[0]} />}
+      {videos.map((video, index) => (
+        <Link key={video.id?.videoId || index} to={`/watch?v=${video.id?.videoId || video.id}`}>
+          <VideoCard info={video} />
+        </Link>
+      ))}
     </div>
-  )
-}
+  );
+};
 
-export default VideoContainer
+export default VideoContainer;
