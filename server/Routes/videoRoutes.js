@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const auth = require("../middleware_temp/authMiddleware");
-const { uploadVideo, getAllVideos, likeVideo, commentOnVideo } = require('../controllers/videoController');
+const { uploadVideo, getAllVideos, likeVideo, commentOnVideo } = require('../Controller/videoController'); // If located in 'Controller'
+
 
 // Protected routes
 router.post('/upload', auth, uploadVideo);

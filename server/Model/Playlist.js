@@ -21,7 +21,7 @@ const PlaylistSchema = new mongoose.Schema({
     ],
     isPublic:
     {
-        Boolean: true,
+        type: Boolean,
         default: false
     }
 },
