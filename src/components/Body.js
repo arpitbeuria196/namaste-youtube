@@ -11,6 +11,8 @@ const Body = () => {
       <div className="flex-1 bg-gray-100 overflow-auto">
         <Outlet />
       </div>
+
+      
     </div>
   )
 }
