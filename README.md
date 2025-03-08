@@ -1,3 +1,13 @@
+
+
+![image](https://github.com/user-attachments/assets/66807a41-6176-486b-a468-60e707f0e66a)
+Search Bar (Debouncing)
+![image](https://github.com/user-attachments/assets/dab263bc-e986-4ed7-b474-d405ba8ed4bc)
+![image](https://github.com/user-attachments/assets/a67bef91-86b9-4a24-8def-933c083ca101)
+![image](https://github.com/user-attachments/assets/0934eccb-2d0e-4c04-9095-2319fb64fadb)
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
